@@ -1,0 +1,15 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: active-mq-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: activemq.domain.com #activemq.${INGRESS_DOMAIN}
+    http:
+      paths:
+      - backend:
+          serviceName: active-mq
+          servicePort: 8161
